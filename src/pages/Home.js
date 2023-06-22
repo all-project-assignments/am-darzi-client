@@ -5,16 +5,18 @@ import FeatureList from "./components/FeatureList";
 import Button from "./components/Button";
 import Hero2 from "./components/Hero2";
 import Footer from "./components/Footer";
+import Gallery from "./components/Gallery/Gallery";
 
 const Home = () => {
     return (
-      <div className="">
+      <div className="relative">
         <Navbar />
         <Hero />
         <ShowCase />
         <FeatureList />
-        <div className="font-great sm:text-xl tracking-widest mx-auto bg-textSecondary px-4 py-1 my-4 max-w-max text-white">Design Your Suit</div>
+        <div className="font-great sm:text-xl md:text-3xl tracking-widest mx-auto bg-textSecondary px-4 sm:px-10 py-1 sm:py-3 my-4 max-w-max text-white">Design Your Suit</div>
         <Hero2 />
+        <Gallery />
         <Footer />
       </div>
     );

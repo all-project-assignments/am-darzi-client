@@ -3,7 +3,7 @@ import Button from './Button';
 
 const Hero = () => {
   return (
-    <div className='border-2 border-yellow-500  '>
+    <div className='relative'>
       {/* <div className="h-full border-2 border-red-600"> */}
         <div>
         <img
@@ -13,8 +13,8 @@ const Hero = () => {
         />
         </div>
       {/* </div> */}
-      <div className='absolute max-w-max top-3/4 md:top-3/4 left-[5%] sm:left-[10%] text-xs'>
-        <div className='text-white my-2'>THE NEW AM DARZI DESIGN ESSENTIAL</div>
+      <div className='absolute max-w-max top-2/4 md:top-3/4 left-[5%] sm:left-[10%] text-xs'>
+        <div className='text-white my-2 font-gotham font-bold text-lg sm:text-xl'>THE NEW AM DARZI DESIGN ESSENTIAL</div>
       <Button text="DISCOVER MORE"/>
       </div>
     </div>

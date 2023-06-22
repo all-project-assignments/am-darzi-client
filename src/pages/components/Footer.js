@@ -5,11 +5,11 @@ import backgroundImage from '../../images/hero2.jpeg';
 
 const Footer = () => {
   return (
-    <div className="relative font-gotham text-white">
+    <div className="relative  font-gotham text-white">
         {/* Background Image */}
-      <div
-      >
-        <img className='blur-lg border-none outline-none  h-96 object-cover object-center sm:h-80 sm:w-full sm:object-top 'src={backgroundImage} alt="footer" />
+      <div className='border ' >
+        {/* <img className='backdrop-filter-none blur-[18px] opacity-80 border-none outline-none  h-96 object-cover object-center sm:h-80 sm:w-full sm:object-top 'src={backgroundImage} alt="footer" /> */}
+        <img className='blur-[2px]  opacity-90  border-none outline-none  h-96 object-cover object-center sm:h-80 sm:w-full sm:object-top 'src={backgroundImage} alt="footer" />
       </div>
       {/* content */}
       <div className="absolute top-0 w-full grid grid-cols-2 sm:grid-cols-3 sm:flex-row font-light  sm:px-16">
@@ -41,7 +41,7 @@ const Footer = () => {
         {/* <br className='sm:hidden' /> */}
         <div className="sm:mt-8 col-span-2 sm:col-span-1 justify-self-center sm:justify-self-end">
           <div className='my-4 pr-20'>Follow Us</div>
-          <div className='flex gap-3'>
+          <div className='flex gap-3 text-white'>
             <div className='bg-black rounded-full p-2 '>
               <FaFacebookF />
             </div>

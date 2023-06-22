@@ -41,7 +41,7 @@ const FeatureList = () => {
         <img src={require('../../../images/third.jpeg')} alt="man-with-coat" />
       </div>
       {/* responsiveness left */}
-      <div className="sm:absolute sm:bottom-[5%] sm:origin-center sm:left-[10%] mt-4  grid grid-cols-1 px-2 sm:grid-cols-3 gap-4">
+      <div className="sm:absolute sm:bottom-[5%] sm:origin-center sm:left-[10%] mt-4  grid grid-cols-2 px-2 sm:grid-cols-3 gap-4">
         {featureList.map((feature, index) => {
             return <Feature key={index} feature={feature} />
         })}
