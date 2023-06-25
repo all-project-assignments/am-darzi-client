@@ -7,7 +7,7 @@ const Hero = () => {
       {/* <div className="h-full border-2 border-red-600"> */}
         <div>
         <img
-          className="h-screen object-cover object-top w-auto sm:h-auto sm:object-cove sm:object-center"
+          className="h-[calc(100vh_-_6rem] object-cover object-top w-auto sm:h-auto sm:object-cove sm:object-center"
           src={require('../../AM-Darzi-Hero.jpeg')}
           alt="main"
         />

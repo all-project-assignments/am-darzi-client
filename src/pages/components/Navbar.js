@@ -47,12 +47,12 @@ const Navbar = () => {
   return (
     <div
       ref={ref}
-      className="fixed top-0 z-50 flex justify-between items-center bg-transparent backdrop-blur-lg w-full h-12 sm:h-24 sm:px-6 lg:px-10 box-border"
+      className="fixed top-0 z-50 flex justify-between items-center bg-black backdrop-blur-lg w-full h-12 sm:h-24 sm:px-6 lg:px-10"
     >
       <HamBurger setOpen={() => setIsOpen((prev) => !prev)} />
-      <div className=" hidden sm:block sm:w-24">
+      <div className=" hidden sm:block sm:w-24 pt-6">
         <img
-          className="object-cover object-center brightness-0"
+          className="object-cover object-center "
           src="/logo2.png"
           alt="logo"
         />

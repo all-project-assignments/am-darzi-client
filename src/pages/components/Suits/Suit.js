@@ -33,10 +33,10 @@ const produts = [
   },
 ];
 
-const Product = () => {
+const Suit = () => {
   return <div>
     
   </div>;
 };
 
-export default Product;
+export default Suit;

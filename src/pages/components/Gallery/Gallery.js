@@ -4,8 +4,7 @@ const Gallery = () => {
     const style1 = 'h-[640] w-[536]';
     const style2 = 'h-[495] w-[536]';
   return (
-    <div className='grid grid-cols-3 mt-4 mb-8 px-1  sm:mx-auto gap-2 lg:max-w-5xl'>
-
+    <div className='relative h-max grid grid-cols-3 mt-4 mb-36 px-1 gap-2 max-w-full sm:mx-auto  lg:max-w-5xl'>
         <img className={'h-[640] w-[536] row-start-1 row-end-3'} src="/product1.jpeg" alt="feature1" />
         <img className={'h-[495] w-[536] row-start-1 row-end-2 '} src="/product2.jpeg" alt="feature2" />
         <img className={'h-[640] w-[536] row-start-1 row-end-3 '} src="/product3.jpeg" alt="feature3" />

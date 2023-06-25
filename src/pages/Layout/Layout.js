@@ -1,12 +1,18 @@
-import React from 'react'
+import React from 'react';
+import {Outlet} from 'react-router-dom';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 
 const Layout = () => {
   return (
-    <div className=''>
-        <div></div>
-        <div></div>
+    <div className="relative">
+      <Navbar />
+      <div className='relative top-24 min-h-max'>
+        <Outlet />
+      </div>
+      <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;
