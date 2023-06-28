@@ -9,7 +9,7 @@ import Gallery from './components/Gallery/Gallery';
 
 const Home = () => {
   return (
-    <div className="relative w-full">
+    <div className=" w-full">
       {/* <Navbar /> */}
       <Hero />
       <ShowCase />

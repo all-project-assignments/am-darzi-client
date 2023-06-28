@@ -1,27 +1,62 @@
-import { Navigate } from "react-router-dom"
-import Home from "../pages/Home"
-import Designs from "../pages/Designs"
-import ErrorPage from "../pages/ErrorPage"
-import Layout from "../pages/Layout/Layout"
-
+import Home from '../pages/Home';
+import Designs from '../pages/Designs';
+import ErrorPage from '../pages/ErrorPage';
+import Layout from '../pages/Layout/Layout';
+import Login2 from '../pages/Login/Login2';
+import Register from '../pages/Register/Register';
+import Products from '../pages/Products/Products';
+import ProductDetails from '../pages/Products/ProductDetails'
+import Profile from '../pages/Profile/Profile';
+import ProtectedRoute from '../pages/ProtectedRoute';
+// import Cart from '../pages/Cart/Cart';
 const pagesData = [
   {
-    path: "/",
+    path: '/',
     element: <Layout />,
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "/",
+        path: '/',
         element: <Home />,
-        title: "home",
+        title: 'home',
       },
       {
-        path: "designs",
-        element: <Designs />,
-        title: "designs",
+        path: '/profile',
+        element: <ProtectedRoute><Profile /></ProtectedRoute>,
+        title: 'user-profile'
       },
-    ]
+      {
+        path: '/products',
+        element: <Products />,
+        title: 'Suits',
+      },
+      {
+        path: '/products/:id',
+        element: <ProductDetails />,
+        title: 'Product',
+      },
+      // {
+      //   path: 'cart',
+      //   element: <Cart />,
+      //   title: 'AM-Darzi | Cart'
+      // },
+      {
+        path: 'designs',
+        element: <Designs />,
+        title: 'designs',
+      },
+    ],
   },
-]
+  {
+    path: '/login',
+    element: <Login2 />,
+    title: 'Login',
+  },
+  {
+    path: '/register',
+    element: <Register />,
+    title: 'Sign-up',
+  },
+];
 
-export default pagesData
+export default pagesData;

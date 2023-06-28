@@ -10,7 +10,7 @@ const Layout = () => {
       <div className='relative top-24 min-h-max'>
         <Outlet />
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

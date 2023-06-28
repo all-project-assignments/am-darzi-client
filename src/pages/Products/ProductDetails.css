@@ -1,0 +1,188 @@
+.buy-now-section{
+  height: 100vh;
+  overflow: hidden;
+  
+}
+.buy-now-section .product-section{
+  height: 100vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.buy-now-section .buy-option{
+  height: 100vh;
+  overflow-y: scroll;
+  padding: 50px 20px;
+ 
+  overflow-x: hidden;
+}
+.buy-now-section .buy-option .breadcrumb .breadcrumb-item a{
+  text-decoration: none;
+  color: black;
+  font-size: 0.8rem;
+}
+.buy-now-section .buy-option .breadcrumb .breadcrumb-item.active a {
+  color: gray;
+  /* font-size: 0.8rem; */
+}
+.buy-option-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.buy-option-header p{
+  margin: 0;
+}
+.buy-option-header p.main-heading {
+  font-size: 1.0rem;
+  color: gray;
+  text-align: start;
+}
+.buy-option-header p.product-tagline{
+  font-size: 0.8rem ;
+  color: black;
+  text-align: start;
+}
+button.price-btn {
+  border: 0;
+  margin-left: 5px;
+  padding: 10px 23px;
+  background: #222222;
+  color: white;
+}
+.buy-option-rating {
+  display: flex;
+  align-items: center;
+  margin: 20px 0px;
+}
+.buy-option-rating p{
+  margin: 0px;
+  margin-left: 5px;
+  font-size: 0.7rem;
+}
+.buy-option-rating svg{
+  color: orange;
+}
+p.description-about-buy-now {
+  font-size: 0.8rem;
+  text-align: left;
+}
+button.order-now.btn {
+  background: #25dc25;
+  color: white;
+  border-radius: 0px;
+  padding: 7px 63px;
+}
+.buy-option .product-item-wrapper {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.accordion-section {
+  width: 100%;
+}
+.accordion {
+  width: 100%;
+  outline: 0px;
+  border-top: 1px solid #e6dede;
+  margin: 15px 0px;
+  border-bottom: 1px solid #e6dede;
+}
+.accordion .accordion-item.active .accordion-content{
+  height: fit-content;
+  min-height: 100px;
+ 
+  overflow: auto;
+  color:black;
+}
+.accordion-item {
+  width: 100%;
+  border: none;
+ 
+  padding: 10px 9px;
+}
+.accordion-title {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.accordion-content {
+  text-align: start;
+  height: 0px;
+  font-size: 0.7rem;
+  padding: 0;
+  padding:0px 5px;
+  overflow: hidden;
+  transition: all 0.5s ease-in-out;
+}
+p.made-from {
+  font-size: 0.8rem;
+  text-align: left;
+  margin: 0px;
+}
+p.made-from-des {
+  font-size: 0.7rem;
+  text-align: left;
+  color: gray;
+ 
+
+
+}
+
+.product-slidees-own span.swiper-pagination-bullet.swiper-pagination-bullet-active {
+  background: #fffcfc;
+}
+.product-slidees-own{
+  position: relative;
+  cursor: grab;
+}
+.product-slidees-own .swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets.swiper-pagination-horizontal {
+  position: absolute;
+  top: 0;
+  right: 5px;
+}
+.product-slidees-own span.swiper-pagination-bullet {
+  border: 2px solid white;
+  
+}
+p.hand-crafted {
+  font-size: 2.0rem;
+  margin-bottom: 0.2rem;
+}
+p.with-love{
+  font-size: 1.4rem;
+  margin-bottom: 0.2rem;
+  color: rgb(166, 166, 166);
+  font-family: serif;
+}
+p.woven-by {
+  font-size: 0.8rem;
+  text-align: left;
+  margin: 0px;
+}
+p.tracing-its-roots {
+  font-size: 0.6rem;
+  text-align: left;
+  margin: 0px;
+  color: gray;
+}
+img.img-fluid.negative-image {
+  margin-top: -135px;
+}
+.product-section::-webkit-scrollbar{
+  /* background-color: white; */
+  display: none;
+}
+.buy-option::-webkit-scrollbar{
+  /* background-color: white; */
+  display: none;
+}
+
+@media (max-width: 500px) {
+  .buy-now-section .product-section {
+      overflow-x: hidden;
+    
+  }
+  .buy-now-section {
+     height: auto;
+  }
+}
