@@ -5,7 +5,7 @@ import Layout from '../pages/Layout/Layout';
 import Login2 from '../pages/Login/Login2';
 import Register from '../pages/Register/Register';
 import Products from '../pages/Products/Products';
-import ProductDetails from '../pages/Products/ProductDetails'
+import ProductDetails2 from '../pages/Products/ProductDetails2'
 import Profile from '../pages/Profile/Profile';
 import ProtectedRoute from '../pages/ProtectedRoute';
 import ProductsWrapper from '../pages/components/ProductsWrapper';
@@ -33,7 +33,7 @@ const pagesData = [
       },
       {
         path: '/products/:id',
-        element: <ProductDetails />,
+        element: <ProductDetails2 />,
         title: 'Product',
       },
       // this may be something illogical
