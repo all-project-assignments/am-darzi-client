@@ -16,7 +16,7 @@ const ProtectedRoute = ({children}) => {
   },[userInfo, userToken])
 
   return (
-    <div>{children}</div>
+    <div className='mb-36'>{children}</div>
   )
 }
 

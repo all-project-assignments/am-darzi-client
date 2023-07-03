@@ -4,7 +4,7 @@ const initialState = {
   products: JSON.parse(window.localStorage.getItem('products')) || [],
   cartItemCount : window.localStorage.getItem('itemCount') || 0
 };
-
+// have to store whole product object
 // complexity can be reduced if we use separate reducers for -> addNewProduct, increaseExistingProductCount, deleteProduct, decreaseCount
 export const cartSlice = createSlice({
   name: 'cart',

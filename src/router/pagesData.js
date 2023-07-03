@@ -8,6 +8,7 @@ import Products from '../pages/Products/Products';
 import ProductDetails from '../pages/Products/ProductDetails'
 import Profile from '../pages/Profile/Profile';
 import ProtectedRoute from '../pages/ProtectedRoute';
+import ProductsWrapper from '../pages/components/ProductsWrapper';
 // import Cart from '../pages/Cart/Cart';
 const pagesData = [
   {
@@ -33,6 +34,12 @@ const pagesData = [
       {
         path: '/products/:id',
         element: <ProductDetails />,
+        title: 'Product',
+      },
+      // this may be something illogical
+      {
+        path: '/:catName',
+        element: <ProductsWrapper></ProductsWrapper>,
         title: 'Product',
       },
       // {
