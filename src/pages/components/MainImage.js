@@ -2,7 +2,7 @@ import React from "react";
 
 const MainImage = ({imgLink}) => {
   return (
-    <div className="w-full max-h-screen border-2 border-green-700 overflow-hidden">
+    <div className="w-full h-fit max-h-screen border-2 border-green-700 overflow-hidden">
       <img
         src={imgLink}
         alt="Product"
