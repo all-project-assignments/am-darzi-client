@@ -1,11 +1,15 @@
-import React, {useEffect, useState} from 'react';
-import {useLocation, useParams} from 'react-router-dom';
-import {getProduct} from '../../services/product';
+import React, { useEffect, useState } from 'react';
+import { Link, useLocation, useParams } from 'react-router-dom';
+import { getProduct } from '../../services/product';
+import Accordin from '../components/PlusAccordin';
+import CustomizeButton from '../components/Buttons/CustomizeButton';
+import MainImage from '../components/MainImage';
 
 const ProductDetails2 = () => {
   const [product, setProduct] = useState(null);
   const [isProductLoading, setIsProductLoading] = useState(true);
-  const {id} = useParams();
+  const { id } = useParams();
+  const {pathname} = useLocation();
 
   const getData = async () => {
     setIsProductLoading(true);
@@ -23,83 +27,80 @@ const ProductDetails2 = () => {
       {isProductLoading ? (
         <div>Loading...</div>
       ) : (
-        <div className="flex font-gotham">
+        <div className="flex flex-col md:flex-row font-gotham ">
           <div className="md:w-4/6">
-            {/* main image */}
-            <div className="md:w-full h-screen">
-              <img
-                src={product ? product.mainImage : product.fabric.image}
-                alt=""
-                className="object-cover object-top max-h-full w-full"
-              />
-            </div>
-            {/* left right aligned  */}
-            <div className="flex flex-col gap-4 bg-gray-300 mb-48">
-              {/* section */}
-              <div className="flex justify-center box-border gap-4  p-8 w-full">
-                {/* content */}
-                <div className="">
-                  <h4>Made from:</h4>
-                  {/* <br /> */}
-                  <p className="max-w-xs">
-                    Blgia Linen with Super 1205 Meino Wool Matt sheen & luxurios
-                    soft feel
-                  </p>
+            {/* scrollable section left */}
+            <div className='max-h-screen overflow-y-scroll scrollbar-hide'>
+              {/* main image */}
+              <MainImage imgLink={product ? product.mainImage : product.fabric.image} />
+              {/* left right aligned  */}
+              <div className="flex flex-col gap-4 bg-gray-300">
+                {/* section */}
+                <div className="flex flex-col sm:flex-row justify-center box-border gap-4  p-8 w-full">
+                  {/* content */}
+                  <div className="">
+                    <h4>Made from:</h4>
+                    {/* <br /> */}
+                    <p className="max-w-xs">
+                      Blgia Linen with Super 1205 Meino Wool Matt sheen & luxurios
+                      soft feel
+                    </p>
+                  </div>
+                  {/* section image */}
+                  <div className="h-96">
+                    <img
+                      src={!product ? product.fabric.image : product.fabric.image}
+                      alt=""
+                      className="h-full"
+                    />
+                  </div>
                 </div>
-                {/* section image */}
-                <div className="h-96">
-                  <img
-                    src={!product ? product.fabric.image : product.fabric.image}
-                    alt=""
-                    className="h-full"
-                  />
+                <div className="flex flex-col sm:flex-row-reverse justify-center gap-4 box-border p-8 w-full">
+                  {/* content */}
+                  <div className="">
+                    <h4>Made from:</h4>
+                    {/* <br /> */}
+                    <p className="max-w-xs">
+                      Blgia Linen with Super 1205 Meino Wool Matt sheen & luxurios
+                      soft feel
+                    </p>
+                  </div>
+                  {/* section image */}
+                  <div className="h-96">
+                    <img
+                      src={!product ? product.fabric.image : product.fabric.image}
+                      alt=""
+                      className="h-full"
+                    />
+                  </div>
                 </div>
-              </div>
-              <div className="flex flex-row-reverse justify-center gap-4 box-border p-8 w-full">
-                {/* content */}
-                <div className="">
-                  <h4>Made from:</h4>
-                  {/* <br /> */}
-                  <p className="max-w-xs">
-                    Blgia Linen with Super 1205 Meino Wool Matt sheen & luxurios
-                    soft feel
-                  </p>
-                </div>
-                {/* section image */}
-                <div className="h-96">
-                  <img
-                    src={!product ? product.fabric.image : product.fabric.image}
-                    alt=""
-                    className="h-full"
-                  />
-                </div>
-              </div>
-              <div className="flex justify-center box-border  gap-4  p-8 w-full">
-                {/* content */}
-                <div className="">
-                  <h4>Made from:</h4>
-                  {/* <br /> */}
-                  <p className="max-w-xs">
-                    Blgia Linen with Super 1205 Meino Wool Matt sheen & luxurios
-                    soft feel
-                  </p>
-                </div>
-                {/* section image */}
-                <div className="h-96">
-                  <img
-                    src={!product ? product.fabric.image : product.fabric.image}
-                    alt=""
-                    className="h-full"
-                  />
+                <div className="flex flex-col sm:flex-row justify-center box-border  gap-4  p-8 w-full">
+                  {/* content */}
+                  <div className="">
+                    <h4>Made from:</h4>
+                    {/* <br /> */}
+                    <p className="max-w-xs">
+                      Blgia Linen with Super 1205 Meino Wool Matt sheen & luxurios
+                      soft feel
+                    </p>
+                  </div>
+                  {/* section image */}
+                  <div className="h-96">
+                    <img
+                      src={!product ? product.fabric.image : product.fabric.image}
+                      alt=""
+                      className="h-full"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
 
             {/* bottom content */}
-            <div>Hello</div>
+            <div>Here add more content</div>
           </div>
 
-          <div className="flex flex-col box-border pt-40 px-8 w-2/6">
+          <div className="flex flex-col box-border pt-40 px-8 md:w-2/6">
             <div>Home / Suits / Offbeat</div>
             <div className="pl-3 flex flex-col gap-4">
               <div className="flex">
@@ -123,9 +124,13 @@ const ProductDetails2 = () => {
                   modern blue hue makes this one of our best sellers.
                 </p>
               </div>
-              <button className="bg-blue-600 font-bold text-white text-2xl px-6 py-2 rounded-md">
-                CUSTOMIZE NOW
-              </button>
+              <CustomizeButton path={pathname} />
+              <Accordin />
+              <hr />
+              <Accordin />
+              <hr />
+              <Accordin />
+              <hr />
             </div>
           </div>
         </div>

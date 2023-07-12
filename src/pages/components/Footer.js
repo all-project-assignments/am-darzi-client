@@ -7,7 +7,7 @@ import backgroundImage from '../../images/hero2.jpeg';
 
 const Footer = () => {
   return (
-    <div className="relative w-full bottom-0  font-gotham text-white">
+    <div className="relative w-full -bottom-24  font-gotham text-white">
       {/* Background Image */}
       <div className="border ">
         {/* <img className='backdrop-filter-none blur-[18px] opacity-80 border-none outline-none  h-96 object-cover object-center sm:h-80 sm:w-full sm:object-top 'src={backgroundImage} alt="footer" /> */}

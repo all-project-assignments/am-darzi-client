@@ -9,6 +9,7 @@ import ProductDetails2 from '../pages/Products/ProductDetails2'
 import Profile from '../pages/Profile/Profile';
 import ProtectedRoute from '../pages/ProtectedRoute';
 import ProductsWrapper from '../pages/components/ProductsWrapper';
+import Customize from '../pages/CustomizeProduct/Customize';
 // import Cart from '../pages/Cart/Cart';
 const pagesData = [
   {
@@ -36,12 +37,17 @@ const pagesData = [
         element: <ProductDetails2 />,
         title: 'Product',
       },
-      // this may be something illogical
       {
-        path: '/:catName',
-        element: <ProductsWrapper></ProductsWrapper>,
-        title: 'Product',
+        path: '/products/:id/customize',
+        element: <Customize />,
+        title: 'Customize',
       },
+      // this may be something illogical
+      // {
+      //   path: '/:catName',
+      //   element: <ProductsWrapper></ProductsWrapper>,
+      //   title: 'Product',
+      // },
       // {
       //   path: 'cart',
       //   element: <Cart />,

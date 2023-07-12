@@ -2,6 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+/* @layer components {
+    .hide-scrollbar {
+        '--webkit-scrollbar': {
+            display: none;
+        }
+    }
+} */
+@layer components{
+    .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+    }
+    .scrollbar-hide {
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+    }
+}
+
 @import url("https://cdn.jsdelivr.net/npm/gotham-fonts@1.0.3/css/gotham-rounded.min.css");
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,600;1,300&display=swap');
