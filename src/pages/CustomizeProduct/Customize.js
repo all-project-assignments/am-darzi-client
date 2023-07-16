@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 import MainImage from "../components/MainImage";
 
@@ -7,16 +7,15 @@ import { BiCheckCircle } from "react-icons/bi";
 // HAVE TO UPDATE IT WITH DYNAMIC AND WITH ID
 const section_list = [
   "FIT",
-  "CANVAS",
   "LAPEL",
   "BUTTONS",
   "POCKETS",
   "VENTS",
   "PANTS",
-  "ADDONS",
-  "MONOGRAM",
-  "SUSTAINABLE",
-  "NOTES",
+  // "ADDONS",
+  // "MONOGRAM",
+  // "SUSTAINABLE",
+  // "NOTES",
 ];
 
 const customizations = [
@@ -44,14 +43,157 @@ const customizations = [
         link: "https://hangrr.com/v7/s3/img18/customize/suits/fit/modern-slim.jpg",
       },
     ],
-    applied: "0 1 0 1 1",
+    applied: "1 1 1 1 1",
+  },
+  {
+    name: "LAPEL",
+    variants: [
+      {
+        name: "Peak Lapel",
+        link: "https://hangrr.com/v7/s3/img18/customize/suits/lapel/peak-lapel.jpg",
+      },
+      {
+        name: "Notch Lapel",
+        link: "https://hangrr.com/v7/s3/img18/customize/suits/lapel/notch-lapel.jpg",
+      },
+      {
+        name: "Shawl Lapel",
+        link: "https://hangrr.com/v7/s3/img18/customize/suits/lapel/shawl-lapel.jpg",
+      },
+    ],
+    applied: "1 1 1",
+  },
+  {
+    name: "BUTTONS",
+    variants: [
+      {
+        name: "One Button",
+        link: "https://hangrr.com/v7/s3/img18/customize/suits/buttons/one-button.jpg",
+      },
+      {
+        name: "Two Button",
+        link: "https://hangrr.com/v7/s3/img18/customize/suits/buttons/three-buttons.jpg",
+      },
+      {
+        name: "Three Button",
+        link: "https://hangrr.com/v7/s3/img18/customize/suits/buttons/three-buttons.jpg",
+      },
+      {
+        name: "Four Buttons 1 Fasten",
+        link: "https://hangrr.com/v7/s3/img18/customize/suits/buttons/4-buttons-1-fasten.jpg",
+      },
+      {
+        name: "Four Buttons 2 Fasten",
+        link: "https://hangrr.com/v7/s3/img18/customize/suits/buttons/4-buttons-2-fasten.jpg",
+      },
+      {
+        name: "Six Buttons 2 Fasten",
+        link: "https://hangrr.com/v7/s3/img18/customize/suits/buttons/6-buttons-2-fasten.jpg",
+      },
+    ],
+    applied: "1 1 1 1 1 1",
+  },
+  {
+    name: "POCKETS",
+    variants: [
+      {
+        name: "Straight Flap",
+        link: "https://hangrr.com/v7/s3/img18/customize/suits/pocket/straight-flap.jpg",
+      },
+      {
+        name: "Straight Flap",
+        link: "https://hangrr.com/v7/s3/img18/customize/suits/pocket/straight-no-flap.jpg",
+      },
+      {
+        name: "Slant Flap",
+        link: "https://hangrr.com/v7/s3/img18/customize/suits/pocket/slant-flap.jpg",
+      },
+      {
+        name: "Slant No Flap",
+        link: "https://hangrr.com/v7/s3/img18/customize/suits/pocket/slant-no-flap.jpg",
+      },
+      {
+        name: "Patch",
+        link: "https://hangrr.com/v7/s3/img18/customize/suits/pocket/patch.jpg",
+      },
+      {
+        name: "Patch With Flap",
+        link: "https://hangrr.com/v7/s3/img18/customize/suits/pocket/patch-with-flap.jpg",
+      },
+    ],
+    applied: "1 1 1 1 1 1",
+  },
+  {
+    name: "VENTS",
+    variants: [
+      {
+        name: "Single Back Cut",
+        link: "https://hangrr.com/v7/s3/img18/customize/suits/pocket/patch-with-flap.jpg",
+      },
+      {
+        name: "Double Back Cut",
+        link: "https://hangrr.com/v7/s3/img18/customize/suits/vents/double-back-cut.jpg",
+      },
+      {
+        name: "No Back Cut",
+        link: "https://hangrr.com/v7/s3/img18/customize/suits/vents/no-back-cut.jpg",
+      },
+    ],
+    applied: "1 1 1",
+  },
+  {
+    name: "PANTS",
+    variants: [
+      {
+        name: "Cross Pockets",
+        link: "https://hangrr.com/v7/s3/img18/customize/suits/pant-pocket/cross-pockets.jpg",
+      },
+      {
+        name: "Straight Pockets",
+        link: "https://hangrr.com/v7/s3/img18/customize/suits/pant-pocket/straight-pockets.jpg",
+      },
+      {
+        name: "Round Pockets",
+        link: "https://hangrr.com/v7/s3/img18/customize/suits/pant-pocket/round-pockets.jpg",
+      },
+    ],
+    applied: "1 1 1",
   },
 ];
 
-const CustomImageSection = ({ variant }) => {
+// now it takes variant name => it will take variant index or (id)
+const CustomImageSection = ({ index, data, setData }) => {
   const [active, setActive] = useState(0);
 
-  const custom = customizations.find((c) => c.name === variant);
+  // add default section data to the parent's data on first come
+  useEffect(() => {
+    // check if data already have some value on this index if yes then don't change
+    const key = customizations[index].name;
+    const value = customizations[index].variants[active];
+    if(data.hasOwnProperty(key)){
+      return ;
+    }
+    setData((prev) => {
+      const prevData = { ...prev };
+      prevData[key] = value;
+      return { ...prevData };
+    });
+  }, [index])
+
+  // change data when user is changing their choice
+  useEffect(() => {
+    const key = customizations[index].name;
+    const value = customizations[index].variants[active];
+    setData((prev) => {
+      const prevData = { ...prev };
+      prevData[key] = value;
+      return { ...prevData };
+    });
+  }, [active])
+
+  // const custom = customizations.find((c) => c.name === variant);
+  const custom = customizations[index];
+  console.log("custommms", custom);
   console.log("custom", custom);
   const dumpApplied = custom.applied.split(" "); //
   console.log("dumpApplied", custom.applied);
@@ -59,9 +201,15 @@ const CustomImageSection = ({ variant }) => {
     dumpApplied[i] === "1" ? v : null
   );
 
+  // handle which image is active right now
+  const handleChange = (i) => {
+    setActive((prev) => i);
+  };
+
   return applicableVariants.map((variant, i) => (
     <div
-      onClick={() => setActive((prev) => i)}
+    key={i}
+      onClick={() => handleChange(i)}
       className={` h-[40%] w-[30%] flex flex-col  px-2 py-1 border-2 border-gray-600 rounded-lg hover:bg-[#98c6e8] hover:text-slate-800 ${
         i === active ? "bg-[#98c6e8]" : null
       } `}
@@ -71,8 +219,8 @@ const CustomImageSection = ({ variant }) => {
         src={variant.link}
         alt="Modern Slim"
       />
-      <div className="pt-4 flex items-center justify-between gap-4">
-        <span className="font-semibold">{variant.name}</span>
+      <div className="pt-4 flex items-center justify-between sm:gap-4">
+        <span className="sm:font-semibold">{variant.name}</span>
         {active === i ? (
           <BiCheckCircle className="bg-[#13f01e] rounded-full text-2xl" />
         ) : null}
@@ -80,14 +228,18 @@ const CustomImageSection = ({ variant }) => {
     </div>
   ));
 };
+
 // get the product details from server
 
 const Customize = () => {
-  const [visited, setVisited] = useState([]);
-  const [active, setActive] = useState(null);
+  // keeping track of which custom section have been visited
+  const [visited, setVisited] = useState([true]);
+  // keeiping track of which section is active (will also be used to show corresponding custom variants)
+  const [active, setActive] = useState(0);
 
   // capture the incoming product
 
+  // will use id instead of index
   const changeSection = (index) => {
     // CHANGE ACTIVE
     setActive((prev) => index);
@@ -102,6 +254,13 @@ const Customize = () => {
       }
     });
   };
+
+  // collecting data to proceed further
+  const [data, setData] = useState({});
+
+  useEffect(() => {
+    console.info("data is changing", data)
+  }, [data])
 
   return (
     <div
@@ -134,13 +293,14 @@ const Customize = () => {
         </div>
 
         {/* Customization Section */}
-        <div className="h-[calc(100vh-6rem)] flex bg-[#dfe6ee] ">
+        <div className="sm:h-[calc(100vh-6rem)] flex flex-col sm:flex-row bg-[#dfe6ee] ">
           {/* image section */}
-          <div className=" flex flex-wrap gap-4 px-2 py-2 text-[#0f1422]">
-            <CustomImageSection variant={"FIT"} />
+          <div className=" flex flex-wrap gap-4 px-2 py-2 text-[#0f1422] sm:w-4/6">
+            {/* <CustomImageSection variant={"FIT"} /> */}
+            <CustomImageSection index={active} data={data} setData={setData} />
           </div>
           {/* section List */}
-          <div className="w-2/6 h-full bg-[#2e3345]">
+          <div className="sm:w-2/6 sm:h-full bg-[#2e3345]">
             {section_list.map((section, index) => {
               return (
                 <div

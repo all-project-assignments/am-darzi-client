@@ -2,11 +2,11 @@ import React from "react";
 
 const MainImage = ({imgLink}) => {
   return (
-    <div className="w-full h-fit max-h-screen border-2 border-green-700 overflow-hidden">
+    <div className="  border-2 border-green-700 overflow-hidden">
       <img
         src={imgLink}
         alt="Product"
-        className="object-cover object-top max-h-full w-full"
+        className="object-none object-top sm:min-h-screen"
       />
     </div>
   );
