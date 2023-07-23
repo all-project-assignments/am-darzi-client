@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+
+// TODO: have to make it to support dynamic content
 const Accordin = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (

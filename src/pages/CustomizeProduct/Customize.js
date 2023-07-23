@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 import MainImage from "../components/MainImage";
-
+import AddToCart from "../components/Buttons/AddToCart";
 import { FaCheck } from "react-icons/fa";
 import { BiCheckCircle } from "react-icons/bi";
 // HAVE TO UPDATE IT WITH DYNAMIC AND WITH ID
@@ -160,7 +160,7 @@ const customizations = [
     applied: "1 1 1",
   },
 ];
-
+// TODO: refactor it to multiple components
 // now it takes variant name => it will take variant index or (id)
 const CustomImageSection = ({ index, data, setData }) => {
   const [active, setActive] = useState(0);
@@ -170,15 +170,15 @@ const CustomImageSection = ({ index, data, setData }) => {
     // check if data already have some value on this index if yes then don't change
     const key = customizations[index].name;
     const value = customizations[index].variants[active];
-    if(data.hasOwnProperty(key)){
-      return ;
+    if (data.hasOwnProperty(key)) {
+      return;
     }
     setData((prev) => {
       const prevData = { ...prev };
       prevData[key] = value;
       return { ...prevData };
     });
-  }, [index])
+  }, [index]);
 
   // change data when user is changing their choice
   useEffect(() => {
@@ -189,7 +189,7 @@ const CustomImageSection = ({ index, data, setData }) => {
       prevData[key] = value;
       return { ...prevData };
     });
-  }, [active])
+  }, [active]);
 
   // const custom = customizations.find((c) => c.name === variant);
   const custom = customizations[index];
@@ -208,9 +208,9 @@ const CustomImageSection = ({ index, data, setData }) => {
 
   return applicableVariants.map((variant, i) => (
     <div
-    key={i}
+      key={i}
       onClick={() => handleChange(i)}
-      className={` h-[40%] w-[30%] flex flex-col  px-2 py-1 border-2 border-gray-600 rounded-lg hover:bg-[#98c6e8] hover:text-slate-800 ${
+      className={` max-h-[50%] w-[30%] flex flex-col px-2 py-1 border-2 border-gray-600 rounded-lg hover:bg-[#98c6e8] hover:text-slate-800 ${
         i === active ? "bg-[#98c6e8]" : null
       } `}
     >
@@ -219,11 +219,11 @@ const CustomImageSection = ({ index, data, setData }) => {
         src={variant.link}
         alt="Modern Slim"
       />
-      <div className="pt-4 flex items-center justify-between sm:gap-4">
-        <span className="sm:font-semibold">{variant.name}</span>
-        {active === i ? (
-          <BiCheckCircle className="bg-[#13f01e] rounded-full text-2xl" />
-        ) : null}
+      <div className="pt-4  flex items-center justify-between w-full sm:gap-4 h-[40%] overflow-hidden box-border">
+        <span className="sm:font-semibold text-sm tracking-tight leading-none max-w-[70%]">{variant.name}</span>
+        {(
+          <BiCheckCircle className={`bg-[#13f01e] p-0 m-0  rounded-full h-[50%] ${active === i ? 'block' : 'hidden'}`} />
+        )}
       </div>
     </div>
   ));
@@ -259,15 +259,15 @@ const Customize = () => {
   const [data, setData] = useState({});
 
   useEffect(() => {
-    console.info("data is changing", data)
-  }, [data])
+    console.info("data is changing", data);
+  }, [data]);
 
   return (
     <div
       className={` flex flex-col md:flex-row md:min-h-[calc(100vh-5rem)] font-gotham text-white`}
     >
       {/* main image of the product */}
-      <section className="md:w-2/6">
+      <section className="md:w-2/6 sm:min-h-[calc(100vh-5rem)] max-h-[calc(100vh-10rem)] overflow-hidden ">
         <MainImage
           imgLink={
             "https://cdn.hangrr.com/v7/s3/product/467/burgundy-summer-linen-suit-multi.webp"
@@ -293,34 +293,41 @@ const Customize = () => {
         </div>
 
         {/* Customization Section */}
-        <div className="sm:h-[calc(100vh-6rem)] flex flex-col sm:flex-row bg-[#dfe6ee] ">
-          {/* image section */}
-          <div className=" flex flex-wrap gap-4 px-2 py-2 text-[#0f1422] sm:w-4/6">
-            {/* <CustomImageSection variant={"FIT"} /> */}
-            <CustomImageSection index={active} data={data} setData={setData} />
-          </div>
-          {/* section List */}
-          <div className="sm:w-2/6 sm:h-full bg-[#2e3345]">
-            {section_list.map((section, index) => {
-              return (
-                <div
-                  onClick={() => changeSection(index)}
-                  key={index}
-                  className={`  font-normal `}
-                >
+        <div className="sm:h-[calc(100vh-10rem)] flex flex-col">
+          <div className=" h-full flex flex-col sm:flex-row bg-[#dfe6ee]">
+            {/* image section */}
+            <div className=" flex flex-wrap gap-4 px-2 py-2 text-[#0f1422] sm:w-4/6">
+              {/* <CustomImageSection variant={"FIT"} /> */}
+              <CustomImageSection
+                index={active}
+                data={data}
+                setData={setData}
+              />
+            </div>
+            {/* section List */}
+            <div className="sm:w-2/6 sm:h-full bg-[#2e3345]">
+              {section_list.map((section, index) => {
+                return (
                   <div
-                    className={`flex justify-between py-1 px-1 cursor-pointer hover:bg-[#1f4ac9] ${
-                      active === index ? "bg-[#16088d]" : ""
-                    }`}
+                    onClick={() => changeSection(index)}
+                    key={index}
+                    className={`  font-normal `}
                   >
-                    <p>{section}</p>
-                    {visited[index] ? <FaCheck /> : null}
+                    <div
+                      className={`flex justify-between py-1 px-1 cursor-pointer hover:bg-[#1f4ac9] ${
+                        active === index ? "bg-[#16088d]" : ""
+                      }`}
+                    >
+                      <p>{section}</p>
+                      {visited[index] ? <FaCheck className={'min-w-2'} /> : null}
+                    </div>
+                    <hr />
                   </div>
-                  <hr />
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
+          <AddToCart className="sm:h-[5rem]"  />
         </div>
       </main>
     </div>

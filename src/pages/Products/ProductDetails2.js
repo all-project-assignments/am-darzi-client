@@ -124,7 +124,7 @@ const ProductDetails2 = () => {
                   modern blue hue makes this one of our best sellers.
                 </p>
               </div>
-              <CustomizeButton path={pathname} />
+              <CustomizeButton path={pathname} text="CUSTOMIZE NOW" />
               <Accordin />
               <hr />
               <Accordin />

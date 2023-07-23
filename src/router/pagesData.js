@@ -11,6 +11,7 @@ import ProtectedRoute from '../pages/ProtectedRoute';
 import ProductsWrapper from '../pages/components/ProductsWrapper';
 import Customize from '../pages/CustomizeProduct/Customize';
 // import Cart from '../pages/Cart/Cart';
+import ProductCard from '../pages/Cart/Cart2';
 const pagesData = [
   {
     path: '/',
@@ -48,11 +49,11 @@ const pagesData = [
       //   element: <ProductsWrapper></ProductsWrapper>,
       //   title: 'Product',
       // },
-      // {
-      //   path: 'cart',
-      //   element: <Cart />,
-      //   title: 'AM-Darzi | Cart'
-      // },
+      {
+        path: 'cart',
+        element: <ProductCard />,
+        title: 'AM-Darzi | Cart'
+      },
       {
         path: 'designs',
         element: <Designs />,
